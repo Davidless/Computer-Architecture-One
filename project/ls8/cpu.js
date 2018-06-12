@@ -70,6 +70,7 @@ class CPU {
         // right now.)
 
         // !!! IMPLEMENT ME
+        let IR = this.ram.read(this.PC);
 
         // Debugging output
         //console.log(`${this.PC}: ${IR.toString(2)}`);
@@ -78,11 +79,14 @@ class CPU {
         // needs them.
 
         // !!! IMPLEMENT ME
+        let operandA = this.ram.read(this.PC + 1);
+        let operandB = this.ram.read(this.PC + 2);
 
         // Execute the instruction. Perform the actions for the instruction as
         // outlined in the LS-8 spec.
 
         // !!! IMPLEMENT ME
+        this.instructionRunner[IR](operandA, operandB);
 
         // Increment the PC register to go to the next instruction. Instructions
         // can be 1, 2, or 3 bytes long. Hint: the high 2 bits of the
@@ -90,6 +94,7 @@ class CPU {
         // for any particular instruction.
         
         // !!! IMPLEMENT ME
+        const operandCount = (IR >> 6);
     }
 }
 
